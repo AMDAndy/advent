@@ -12,9 +12,11 @@ function* chunkarray(arr, count) {
 
 
 const items = input.map(bag => new Set(intersect(splitString(bag)[0], splitString(bag)[1])));
-items.map(([item]) => getValue(item)).reduce((accumulator, currentValue) => accumulator + currentValue, 0)
+const part1 = items.map(([item]) => getValue(item)).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
 
 
 const groups = [...chunkarray(input, 3)];
-groups.map(([firstelf, secondelf, thirdelf]) =>
+const part2 = groups.map(([firstelf, secondelf, thirdelf]) =>
 new Set(intersect(firstelf, intersect(secondelf, thirdelf)))).map(([letter]) => getValue(letter)).reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+console.log(`Part 1: ${part1}
+Part 2: ${part2}`);
